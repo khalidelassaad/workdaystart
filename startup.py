@@ -8,7 +8,10 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
+SCOPES = [
+    'https://www.googleapis.com/auth/documents',
+    'https://www.googleapis.com/auth/drive'
+    ]
 
 # The ID of a sample document.
 DOCUMENT_ID = '1S7U5g8ct0PmUCARfso6Y_3PkcTGbKT1l1OMmSBLo8ZA'
