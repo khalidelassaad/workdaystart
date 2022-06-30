@@ -13,13 +13,12 @@ SCOPES = [
     'https://www.googleapis.com/auth/drive'
     ]
 
-# The ID of a sample document.
+# The ID of the template document.
 DOCUMENT_ID = '1S7U5g8ct0PmUCARfso6Y_3PkcTGbKT1l1OMmSBLo8ZA'
 
 
 def main():
     """Shows basic usage of the Docs API.
-    Prints the title of a sample document.
     """
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
