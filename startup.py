@@ -1,4 +1,5 @@
 import os.path
+import json
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -10,7 +11,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
 
 # The ID of a sample document.
-DOCUMENT_ID = '195j9eDD3ccgjQRttHhJPymLJUCOUjs-jmwTrekvdjFE'
+DOCUMENT_ID = '1S7U5g8ct0PmUCARfso6Y_3PkcTGbKT1l1OMmSBLo8ZA'
 
 
 def main():
@@ -42,6 +43,10 @@ def main():
         document = service.documents().get(documentId=DOCUMENT_ID).execute()
 
         print('The title of the document is: {}'.format(document.get('title')))
+        
+        templateJsonFile = open("templatefile.json", "w")
+        templateJsonFile.write(json.dumps(document, indent=4, sort_keys=True))
+        templateJsonFile.close()
     except HttpError as err:
         print(err)
 
