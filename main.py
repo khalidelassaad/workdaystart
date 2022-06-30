@@ -1,4 +1,5 @@
 import googleapiauth
+import datetime
 
 from googleapiclient.discovery import build
 
@@ -11,6 +12,8 @@ docsService = build('docs', 'v1', credentials=creds)
 driveService = build('drive', 'v3', credentials=creds)
 
 # 3. Format title for today's date
+documentTitle = "{} Notes".format(datetime.date.today().strftime("%m-%d-%Y"))
+
 # 4. Does this title already exist in folder location?
 #   If so open it
 #   If not...
