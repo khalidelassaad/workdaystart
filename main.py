@@ -17,14 +17,14 @@ driveService = build('drive', 'v3', credentials=creds)
 documentTitle = "{} Notes".format(datetime.date.today().strftime("%m-%d-%Y"))
 
 # 4. Find the "Notes" folder id, if it doesn't exist, create it
-folder = driveService.files().list(
+folderList = driveService.files().list(
     corpora="user", 
     fields="files(id,name)", 
     q="name = '{}' and mimeType = 'application/vnd.google-apps.folder'".format(NOTES_FOLDER_NAME)
     ).execute().get('files', [])
 
-if not folder:
-    print("'{}' folder not found, creating folder.".format(NOTES_FOLDER_NAME))
+if not folderList:
+    print("'{}' folder not found, creating it.".format(NOTES_FOLDER_NAME))
     folderMetadata = {
             'name': NOTES_FOLDER_NAME,
             'mimeType': 'application/vnd.google-apps.folder'
@@ -32,16 +32,20 @@ if not folder:
     folderId = driveService.files().create(body=folderMetadata, fields='id').execute().get("id")
 else:
     print("'{}' folder found.".format(NOTES_FOLDER_NAME))
-    folderId = folder[0]['id']    
-
-print(folderId)
-
+    folderId = folderList[0]['id']    
 
 # 5. Does this title already exist in folder location?
-# for file in driveService.files().list(corpora="user", fields="*", q="'1Nbb96paDsE00Bq-Y87CKF_8x6cN5pM6W' in parents").execute().get('files', []):
-#     print(file['name'])
+files = driveService.files().list(
+    corpora="user",
+    fields="files(id,name)",
+    q="'{}' in parents and name = '{}'".format(folderId, documentTitle)
+    ).execute().get('files', [])
+    
+for file in files:
+    print(file)
 
 #   If so open it
+
 #   If not...
 # 6. Create document with today's title
 # 7. Populate document with info from templatefile.json (replacing title)
