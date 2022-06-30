@@ -1,0 +1,95 @@
+{
+    "kind": "drive#file",
+    "id": "1Nbb96paDsE00Bq-Y87CKF_8x6cN5pM6W",
+    "name": "Notes",
+    "mimeType": "application/vnd.google-apps.folder",
+    "starred": false,
+    "trashed": false,
+    "explicitlyTrashed": false,
+    "parents": [
+        "0ALjeJqs4sp9sUk9PVA"
+    ],
+    "spaces": [
+        "drive"
+    ],
+    "version": "21",
+    "webViewLink": "https://drive.google.com/drive/folders/1Nbb96paDsE00Bq-Y87CKF_8x6cN5pM6W",
+    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
+    "hasThumbnail": false,
+    "thumbnailVersion": "0",
+    "viewedByMe": true,
+    "viewedByMeTime": "2022-06-30T17:44:02.097Z",
+    "createdTime": "2022-06-21T14:57:18.083Z",
+    "modifiedTime": "2022-06-21T14:57:18.083Z",
+    "modifiedByMeTime": "2022-06-21T14:57:18.083Z",
+    "modifiedByMe": true,
+    "owners": [
+        {
+            "kind": "drive#user",
+            "displayName": "Khalid Elassaad",
+            "photoLink": "https://lh3.googleusercontent.com/a-/AOh14GhpiORg8KQuhxWffHGU7RNAzH1i7CeL1x4OTnUn=s64",
+            "me": true,
+            "permissionId": "15197017114201893223",
+            "emailAddress": "khalid.elassaad@algolia.com"
+        }
+    ],
+    "lastModifyingUser": {
+        "kind": "drive#user",
+        "displayName": "Khalid Elassaad",
+        "photoLink": "https://lh3.googleusercontent.com/a-/AOh14GhpiORg8KQuhxWffHGU7RNAzH1i7CeL1x4OTnUn=s64",
+        "me": true,
+        "permissionId": "15197017114201893223",
+        "emailAddress": "khalid.elassaad@algolia.com"
+    },
+    "shared": false,
+    "ownedByMe": true,
+    "capabilities": {
+        "canAcceptOwnership": false,
+        "canAddChildren": true,
+        "canAddMyDriveParent": false,
+        "canChangeCopyRequiresWriterPermission": false,
+        "canChangeSecurityUpdateEnabled": false,
+        "canChangeViewersCanCopyContent": false,
+        "canComment": true,
+        "canCopy": false,
+        "canDelete": true,
+        "canDownload": true,
+        "canEdit": true,
+        "canListChildren": true,
+        "canModifyContent": true,
+        "canMoveChildrenWithinDrive": true,
+        "canMoveItemIntoTeamDrive": true,
+        "canMoveItemOutOfDrive": true,
+        "canMoveItemWithinDrive": true,
+        "canReadRevisions": false,
+        "canRemoveChildren": true,
+        "canRemoveMyDriveParent": true,
+        "canRename": true,
+        "canShare": true,
+        "canTrash": true,
+        "canUntrash": true
+    },
+    "viewersCanCopyContent": true,
+    "copyRequiresWriterPermission": false,
+    "writersCanShare": true,
+    "permissions": [
+        {
+            "kind": "drive#permission",
+            "id": "15197017114201893223",
+            "type": "user",
+            "emailAddress": "khalid.elassaad@algolia.com",
+            "role": "owner",
+            "displayName": "Khalid Elassaad",
+            "photoLink": "https://lh3.googleusercontent.com/a-/AOh14GhpiORg8KQuhxWffHGU7RNAzH1i7CeL1x4OTnUn=s64",
+            "deleted": false,
+            "pendingOwner": false
+        }
+    ],
+    "folderColorRgb": "#8f8f8f",
+    "quotaBytesUsed": "0",
+    "isAppAuthorized": false,
+    "linkShareMetadata": {
+        "securityUpdateEligible": false,
+        "securityUpdateEnabled": true
+    }
+}
