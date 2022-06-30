@@ -1,5 +1,6 @@
 import googleapiauth
 import datetime
+import webbrowser
 
 from googleapiclient.discovery import build
 
@@ -40,13 +41,17 @@ files = driveService.files().list(
     fields="files(id,name)",
     q="'{}' in parents and name = '{}'".format(folderId, documentTitle)
     ).execute().get('files', [])
-    
-for file in files:
-    print(file)
 
 #   If so open it
+if files:
+    fileId = files[0]['id']
+    docsUrl = "https://docs.google.com/document/d/{}/edit#".format(fileId)
+    webbrowser.open(docsUrl)
 
 #   If not...
+
+
+
 # 6. Create document with today's title
 # 7. Populate document with info from templatefile.json (replacing title)
 # 8. Open document in browser (in a new tab preferrably, instead of window)
