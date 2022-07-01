@@ -39,7 +39,7 @@ else:
 
 # 5. Does this title already exist in folder location?
 # TODO: REMOVE THIS DEBUG LINE:
-documentTitle += "OK"
+# documentTitle += "OK"
 
 files = driveService.files().list(
     corpora="user",
@@ -49,15 +49,19 @@ files = driveService.files().list(
 
 #   If so open it
 if files:
-    print("'{}' file found".format(documentTitle))
+    print("'{}/{}' file found, opening it.".format(NOTES_FOLDER_NAME, documentTitle))
     fileId = files[0]['id']
     
 #   If not...
 else:
+    print("'{}/{}' file not found, creating and opening it.".format(
+        NOTES_FOLDER_NAME,
+        documentTitle))
 # 6. Create document in Notes folder with today's title 
     file_metadata = {
         'name': documentTitle,
-        'mimeType':'application/vnd.google-apps.document' # TODO: SET PARENTS WITH FOLDERID
+        'mimeType':'application/vnd.google-apps.document',
+        'parents': [folderId]
     }
     file = driveService.files().create(
         body=file_metadata,
@@ -66,8 +70,8 @@ else:
     fileId = file['id']
 
 # 7. Populate document with template data via docs api
-templateJson = json.load(open("documentJSONs/templatefile.json", "r"))
-docsService.documents().batchUpdate(fileId, body=templateJson) # TODO: Make this guy actually update the file
+# templateJson = json.load(open("documentJSONs/templatefile.json", "r"))
+# docsService.documents().batchUpdate(fileId, body=templateJson) # TODO: Make this guy actually update the file
 
 # 8. Open document in browser (in a new tab preferrably, instead of window)
 docsUrl = "https://docs.google.com/document/d/{}/edit#".format(fileId)
