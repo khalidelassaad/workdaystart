@@ -3,6 +3,7 @@ import datetime
 import webbrowser
 
 from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
 
 NOTES_FOLDER_NAME = "Notes"
 
@@ -36,6 +37,9 @@ else:
     folderId = folderList[0]['id']    
 
 # 5. Does this title already exist in folder location?
+# TODO: REMOVE THIS DEBUG LINE:
+documentTitle += "OK"
+
 files = driveService.files().list(
     corpora="user",
     fields="files(id,name)",
@@ -48,12 +52,18 @@ if files:
     
 #   If not...
 else:
-    fileId = None # TODO
-
 # 6. Create document in Notes folder with today's title 
+    file_metadata = {
+        'name': documentTitle,
+        'mimeType':'application/vnd.google-apps.document'
+    }
+    file = driveService.files().create(
+        body=file_metadata,
+        fields='id'
+        ).execute()
+    fileId = file['id']
 
-
-# 7. Populate document with info from templatefile.json (replacing title)
+# 7. Populate document with template data via docs api
 
 
 # 8. Open document in browser (in a new tab preferrably, instead of window)
