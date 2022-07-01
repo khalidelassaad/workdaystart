@@ -1,6 +1,7 @@
 import googleapiauth
 import datetime
 import webbrowser
+import json
 
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -48,6 +49,7 @@ files = driveService.files().list(
 
 #   If so open it
 if files:
+    print("'{}' file found".format(documentTitle))
     fileId = files[0]['id']
     
 #   If not...
@@ -55,7 +57,7 @@ else:
 # 6. Create document in Notes folder with today's title 
     file_metadata = {
         'name': documentTitle,
-        'mimeType':'application/vnd.google-apps.document'
+        'mimeType':'application/vnd.google-apps.document' # TODO: SET PARENTS WITH FOLDERID
     }
     file = driveService.files().create(
         body=file_metadata,
@@ -64,7 +66,8 @@ else:
     fileId = file['id']
 
 # 7. Populate document with template data via docs api
-
+templateJson = json.load(open("documentJSONs/templatefile.json", "r"))
+docsService.documents().batchUpdate(fileId, body=templateJson) # TODO: Make this guy actually update the file
 
 # 8. Open document in browser (in a new tab preferrably, instead of window)
 docsUrl = "https://docs.google.com/document/d/{}/edit#".format(fileId)
